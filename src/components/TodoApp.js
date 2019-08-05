@@ -30,6 +30,10 @@ function TodoApp() {
     setTodos([...todos, { id: 4, task: newTodo, completed: false }]);
   }
 
+  function removeTodo(todoId) {
+    const updateTodos = todos.filter(todo => todo.id !== todoId);
+  }
+
   return (
     <Paper style={paperHeight} elevation={0}>
       <AppBar color="primary" position="static" style={{ height: "64px" }}>
