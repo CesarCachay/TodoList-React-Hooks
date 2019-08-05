@@ -8,6 +8,7 @@ import TodoForm from "./TodoForm";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 
 const paperHeight = {
   padding: "0px",
@@ -34,8 +35,12 @@ function TodoApp() {
       <AppBar color="primary" position="static" style={{ height: "64px" }}>
         <Typography color="inherit">TODOS WITH HOOKS</Typography>
       </AppBar>
-      <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} />
+      <Grid container justify="center" style={{ marginTop: "1rem" }}>
+        <Grid item xs={11} md={8} lg={4}>
+          <TodoForm addTodo={addTodo} />
+          <TodoList todos={todos} />
+        </Grid>
+      </Grid>
     </Paper>
   );
 }
