@@ -1,6 +1,6 @@
 import React from "react";
 
-import EditTodo from "./EditTodo";
+import EditTodoForm from "./EditTodoForm";
 
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -16,9 +16,9 @@ function Todo({ task, completed, removeTodo, toggleTodo, editTodo, id }) {
   const [isEditing, toggle] = useToggleState(false);
 
   return (
-    <ListItem>
+    <ListItem style={{ height: "64px" }}>
       {isEditing ? (
-        <EditTodo
+        <EditTodoForm
           editTodo={editTodo}
           id={id}
           task={task}

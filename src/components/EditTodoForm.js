@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 
 import useInputState from "../hooks/useInputState";
 
-function EditTodo({ editTodo, toggleTodoForm, id, task }) {
+function EditTodoForm({ editTodo, toggleTodoForm, id, task }) {
   const [value, handleChange, reset] = useInputState(task);
 
   function handleUpdate(e) {
@@ -15,7 +15,7 @@ function EditTodo({ editTodo, toggleTodoForm, id, task }) {
   }
 
   return (
-    <form onSubmit={handleUpdate}>
+    <form onSubmit={handleUpdate} style={{ width: "60%" }}>
       <TextField
         margin="normal"
         value={value}
@@ -27,4 +27,4 @@ function EditTodo({ editTodo, toggleTodoForm, id, task }) {
   );
 }
 
-export default EditTodo;
+export default EditTodoForm;

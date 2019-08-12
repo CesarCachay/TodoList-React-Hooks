@@ -11,26 +11,29 @@ import Divider from "@material-ui/core/Divider";
 function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
   return (
     <Paper>
-      <List>
-        {todos.map(todo => (
-          <>
-            <ListItem>
-              <ListItemText>
-                <Todo
-                  key={todo.id}
-                  id={todo.id}
-                  task={todo.task}
-                  completed={todo.completed}
-                  removeTodo={removeTodo}
-                  toggleTodo={toggleTodo}
-                  editTodo={editTodo}
-                />
-              </ListItemText>
-            </ListItem>
-            <Divider />
-          </>
-        ))}
-      </List>
+      {todos.length !== 0 ? (
+        <List>
+          {todos.map((todo, index) => (
+            <>
+              <ListItem>
+                <ListItemText>
+                  <Todo
+                    key={todo.id}
+                    id={todo.id}
+                    task={todo.task}
+                    completed={todo.completed}
+                    removeTodo={removeTodo}
+                    toggleTodo={toggleTodo}
+                    editTodo={editTodo}
+                  />
+                </ListItemText>
+              </ListItem>
+              {index < todos.length - 1 && <Divider />}
+              {/* {index < todos.length - 1 ? <Divider /> : ""} give us same result like line 30*/}
+            </>
+          ))}
+        </List>
+      ) : null}
     </Paper>
   );
 }

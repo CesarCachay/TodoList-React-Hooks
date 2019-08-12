@@ -19,13 +19,18 @@ const paperHeight = {
 };
 
 function TodoApp() {
-  const initialTodos = [
-    { id: 1, task: "Learn React-Redux", completed: false },
-    { id: 2, task: "Wash Car", completed: false },
-    { id: 3, task: "Deploy Project", completed: true }
-  ];
+  const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
+  // const initialTodos = [
+  //   { id: 1, task: "Learn React-Redux", completed: false },
+  //   { id: 2, task: "Wash Car", completed: false },
+  //   { id: 3, task: "Deploy Project", completed: true }
+  // ];
 
   const [todos, setTodos] = React.useState(initialTodos);
+
+  React.useEffect(() => {
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(newTodo) {
     setTodos([...todos, { id: uuid(), task: newTodo, completed: false }]);
