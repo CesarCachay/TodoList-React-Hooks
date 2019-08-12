@@ -18,10 +18,8 @@ function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
               <ListItem>
                 <ListItemText>
                   <Todo
+                    {...todo}
                     key={todo.id}
-                    id={todo.id}
-                    task={todo.task}
-                    completed={todo.completed}
                     removeTodo={removeTodo}
                     toggleTodo={toggleTodo}
                     editTodo={editTodo}
