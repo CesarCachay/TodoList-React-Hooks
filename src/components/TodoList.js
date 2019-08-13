@@ -8,25 +8,30 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 
-function TodoList({ todos }) {
+function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
   return (
     <Paper>
-      <List>
-        {todos.map(todo => (
-          <>
-            <ListItem>
-              <ListItemText>
-                <Todo
-                  task={todo.task}
-                  key={todo.id}
-                  completed={todo.completed}
-                />
-              </ListItemText>
-            </ListItem>
-            <Divider />
-          </>
-        ))}
-      </List>
+      {todos.length !== 0 ? (
+        <List>
+          {todos.map((todo, index) => (
+            <>
+              <ListItem>
+                <ListItemText>
+                  <Todo
+                    {...todo}
+                    key={todo.id}
+                    removeTodo={removeTodo}
+                    toggleTodo={toggleTodo}
+                    editTodo={editTodo}
+                  />
+                </ListItemText>
+              </ListItem>
+              {index < todos.length - 1 && <Divider />}
+              {/* {index < todos.length - 1 ? <Divider /> : ""} give us same result like line 30*/}
+            </>
+          ))}
+        </List>
+      ) : null}
     </Paper>
   );
 }
