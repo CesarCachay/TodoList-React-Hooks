@@ -3,6 +3,7 @@ import React from "react";
 import { jsx } from "@emotion/core";
 
 import useTodoState from "../hooks/useTodoState";
+import useLocalStorageState from "../hooks/useLocalStorageState";
 
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
@@ -20,19 +21,11 @@ const paperHeight = {
 };
 
 function TodoApp() {
-  const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
+  const initialTodos = [{ id: 1, task: "Wash the car", completed: false }];
+
   const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoState(
     initialTodos
   );
-  // const initialTodos = [
-  //   { id: 1, task: "Learn React-Redux", completed: false },
-  //   { id: 2, task: "Wash Car", completed: false },
-  //   { id: 3, task: "Deploy Project", completed: true }
-  // ];
-
-  React.useEffect(() => {
-    window.localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
 
   return (
     <Paper style={paperHeight} elevation={0}>
